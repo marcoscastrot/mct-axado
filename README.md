@@ -1,6 +1,10 @@
 # mct-axado
 This is a project that allow the user consult, create, update, delete and rate carriers.
 
+## Dependences
+
+The projeto was built using asp.net mvc 4. If you using visual studio 2010 or 2012, access http://www.asp.net/mvc/mvc4 to install.
+
 ## Configuration
 
 In the web.config file, configure the server and change the connection string name to TesteAxadoContext and Initial Catalog to TesteAxado
@@ -28,7 +32,7 @@ enable-migrations
 update-database
 ```
 
-This is it! The project is ready to run.
+That is it! The project is ready to run.
 
 ## Contributing
 
