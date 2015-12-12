@@ -1,0 +1,21 @@
+﻿@model TesteAxado.Models.User
+
+@{
+    ViewBag.Title = "Create user";
+}
+
+<h2>Create user</h2>
+
+<form action="/User/Create" method="post">
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="txtLogin">Login:</label>
+            <input type="text" id="txtLogin" name="Login" value="@Model.Login" title="User login" class="form-control" maxlength="500" />
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary" title="Save new user">Save</button>
+    <a class="btn btn-default" title="Cancel save" href="/User/Index" >Cancel</a>
+</form>

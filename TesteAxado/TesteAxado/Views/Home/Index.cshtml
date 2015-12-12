@@ -1,0 +1,25 @@
+﻿@model TesteAxado.Models.User
+@{
+    ViewBag.Title = "Teste Axado";
+}
+
+@if (!TesteAxado.Commom.TesteAxadoSession.IsAuthenticated)
+{
+    <h2>Login</h2>
+    
+    <form action="~/Home/LogIn" method="post" >
+        <div class="row">
+            <div class="col-md-8">
+                <label for="txtLogin">User:</label>
+                <input type="text" id="txtLogin" name="Login" title="User login" class="form-control" maxlength="500" />
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        <br />
+        <strong>Users: </strong> admin, user
+    </form>
+}
+else{
+    <h2>Home</h2>
+}

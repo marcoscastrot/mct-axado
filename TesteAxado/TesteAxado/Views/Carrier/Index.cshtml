@@ -1,0 +1,23 @@
+﻿@model List<TesteAxado.Models.CarrierIndex>
+
+@{
+    ViewBag.Title = "Carriers";
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+<h2>Carriers</h2>
+
+<a href="/Carrier/Create" class="btn btn-primary" title="New carrier"><span class="glyphicon glyphicon-plus"></span>New carrier</a>
+<br />
+<br />
+@grid.GetHtml("table table-striped table-bordered table-responsive", emptyRowCellValue: "No data found",
+        columns: grid.Columns(
+        grid.Column(header: "Carrier", canSort: true, columnName: "Name"),
+        grid.Column(header: "Identification number", canSort: true, columnName: "Identifier"),
+        grid.Column(header: "Average rate", canSort: true, columnName: "AverageRate"),
+        grid.Column(header: "", style: "columnCarier", canSort: false ,format: @<span>
+                                                            <a href="~/Carrier/Detail/@item.Id" class="btn btn-sm btn-default" title="Detail"><span class="glyphicon glyphicon-search"></span></a>
+                                                            <a href="~/Carrier/Update/@item.Id" class="btn btn-sm btn-default" title="Update"><span class="glyphicon glyphicon-edit"></span></a>
+                                                            <a href="~/Carrier/Delete/@item.Id" class="btn btn-sm btn-danger confirmDialog" onclick="return confirm('Are you sure？')" title="Delete"><span class="glyphicon glyphicon-remove"></span></a>
+                                                        </span>)
+    ))

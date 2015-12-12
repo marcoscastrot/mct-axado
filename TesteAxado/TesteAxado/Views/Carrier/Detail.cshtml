@@ -1,0 +1,60 @@
+﻿@model TesteAxado.Models.Carrier
+
+@{
+    ViewBag.Title = "Carrier";
+}
+
+<h2>Carrier</h2>
+<input type="hidden" id="idCarrier" value="@Model.Id" name="Id" />
+<div class="row">
+    <div class="col-md-8">
+        <label for="txtName">Name:</label>
+        <input type="text" id="txtName" value="@Model.Name" title="Carrier name" class="form-control" maxlength="500" disabled="disabled" />
+    </div>
+    <div class="col-md-4 alignRight">
+        <div id="rating"></div><label id="ratAvg">Avg: 0</label>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="txtIdentifier">Identification number:</label>
+        <input type="text" id="txtIdentifier" value="@Model.Identifier" title="Carrier identification number" class="form-control cnpj" disabled="disabled" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <label for="txtPhone">Phone number:</label>
+        <input type="tel" id="txtPhone" value="@Model.Phone" title="Carrier phone number" class="form-control" maxlength="50" disabled="disabled" />
+    </div>
+    <div class="col-md-8">
+        <label for="txtEmail">Email:</label>
+        <input type="email" id="txtEmail" value="@Model.Email" title="Carrier email" class="form-control" maxlength="250" disabled="disabled" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <label for="txtAddress">Address:</label>
+        <input type="text" id="txtAddress" value="@Model.Address" title="Carrier address" class="form-control" disabled="disabled" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label for="txtNumber">Number:</label>
+        <input type="number" id="txtNumber" value="@Model.Number" title="Carrier number" class="form-control" disabled="disabled" />
+    </div>    
+    <div class="col-md-6">
+        <label for="txtPostalCode">Postal Code:</label>
+        <input type="text" id="txtPostalCode" value="@Model.PostalCode" title="Carrier postal code" class="form-control" maxlength="9" disabled="disabled" />
+    </div>
+</div>
+<br />
+
+<a class="btn btn-default" title="Back" href="/Carrier/Index">Back</a>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/View/Carrier/details.js")
+}

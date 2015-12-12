@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap")
+</head>
+<body>
+    <div class="preloadingBackground" style="display:none;">
+        <div id="preloading">
+            Loading...
+        </div>
+    </div>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Teste Axado</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/Home/Index">Teste Axado</a>
+                </div>
+                @if (TesteAxado.Commom.TesteAxadoSession.IsAuthenticated)
+                {
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/Carrier/Index"><span class="glyphicon glyphicon-road"></span> Carrier</a></li>
+                            <li><a href="/User/Index"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Hello, @TesteAxado.Commom.TesteAxadoSession.LoggedUser.Login</a></li>
+                            <li><a href="/Home/LogOut"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div id="messages">
+                <div class="alert alert-dismissible fade in" role="alert" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong id="messagetype"></strong><span id="message"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    ​
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div id="body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
+
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var messages = '@HttpUtility.HtmlDecode(TempData["Message"].ToString())';
+
+                switch ('@TempData["MessageType"]') {
+                    case 'Warning':
+                        ShowMessage(messages, 'warning');
+                        break;
+                    case 'Success':
+                        ShowMessage(messages, 'success');
+                        break;
+                    case 'Error':
+                        ShowMessage(messages, 'error');
+                    case 'Info':
+                        ShowMessage(messages, 'info');
+                        break;
+                }
+
+                var ret = '@TempData.Remove("Message")';
+                ret = '@TempData.Remove("MessageType")';
+
+            });
+        </script>
+    }
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

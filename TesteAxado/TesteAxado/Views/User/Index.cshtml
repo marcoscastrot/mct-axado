@@ -1,0 +1,18 @@
+﻿@model List<TesteAxado.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+    var grid = new WebGrid(source: Model, rowsPerPage: 10);
+}
+
+<h2>Users</h2>
+
+<a href="/User/Create" class="btn btn-primary" title="New user"><span class="glyphicon glyphicon-plus"></span>New user</a>
+<br />
+<br />
+@grid.GetHtml("table table-striped table-bordered table-responsive", emptyRowCellValue: "No data found",
+        columns: grid.Columns(
+        grid.Column(header: "User", canSort: true, columnName: "Login")
+    ))
+
+
